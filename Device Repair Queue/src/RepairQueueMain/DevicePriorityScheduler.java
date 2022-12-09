@@ -132,7 +132,7 @@ public class DevicePriorityScheduler extends JFrame {
      
       add(new JScrollPane(textArea), constraints); //area for console output
       
-      //output from console
+     //Creates new Priority Queue from CustomerOrder class called customerOrders
       Queue<CustomerOrder> customerOrders = new PriorityQueue<>(new CustomerOrderComparator());
 
       //results button - this outputs sorted customer queue
@@ -174,49 +174,59 @@ public class DevicePriorityScheduler extends JFrame {
       //Action listener for add button which adds new customer
       jButton.addActionListener(new ActionListener() {
           @Override
+     
           public void actionPerformed(ActionEvent e) {
-          	String nameEntered = textField.getText(); //variable stores whatever is typed in customer name textfield
+        	  
+          	String nameEntered = textField.getText();//variable stores whatever is typed in customer name textfield
             String damagedSelected = jComboBox.getItemAt(jComboBox.getSelectedIndex()); //stores whatever in dropdown list is selected
              
+            if (textField.getText().trim().isEmpty()) { //Validation to check if name or something at all is entered
+                System.out.println("No customer name entered");
+            }else {  
+            	
             //If structure for determining what user selected in dropdown menu
-              if(damagedSelected == "Shattered iPhone screen ") {
+              if(damagedSelected == "Shattered iPhone screen " ) {
             	  customerOrders.add(new CustomerOrder(2,nameEntered));
                 	System.out.println("Customer: " + nameEntered + " added");
-              }
+                	textField.setText("");
+              } 
               
               if(damagedSelected == "iPhone Logic Board Failure") {
             	  customerOrders.add(new CustomerOrder(3,nameEntered));
                 	System.out.println("Customer: " + nameEntered + " added");
-
+                	textField.setText("");
               }
               if(damagedSelected == "iPhone Shattered Rear Camera") {
             	  customerOrders.add(new CustomerOrder(1,nameEntered));
                 	System.out.println("Customer: " + nameEntered + " added");
-
+                	textField.setText("");
                 
               }
               
-              if(damagedSelected == "MacBook Pro Logic Board Replacement") {
+              if(damagedSelected == "MacBook Pro Logic Board Replacement"  ) {
             	  customerOrders.add(new CustomerOrder(5,nameEntered));              	
               	System.out.println("Customer: " + nameEntered + " added");
-                
+              	textField.setText("");
               }
               
            
               if(damagedSelected == "MacBook Pro Top Case Replacement") {
                	 customerOrders.add(new CustomerOrder(4,nameEntered));              	
                 	System.out.println("Customer: " + nameEntered + " added");
-                 
+                	textField.setText("");
                }
               
               if(damagedSelected == "MacBook Pro Screen Replacement") {
               
                 	 customerOrders.add(new CustomerOrder(6, nameEntered));              	
                  	System.out.println("Customer: " + nameEntered + " added");
-                  
+                 	textField.setText("");
                 }
-          //   
+           }	
+          	
           }
+          
+          
           
       });
       
