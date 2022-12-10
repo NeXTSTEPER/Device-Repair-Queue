@@ -31,21 +31,21 @@ import java.util.Queue;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.text.BadLocationException;
 
 
+@SuppressWarnings("serial")
 public class DevicePriorityScheduler extends JFrame {
   /**
    * The text area which is used for displaying logging information.
    */
   private JTextArea textArea; //textarea for console output in a GUI
   private JTextField textField; //creating textfield for customer name entry
-  private PrintStream standardOut;
+  @SuppressWarnings("unused")
+private PrintStream standardOut;
   
   //Declaring Jbuttons for GUI
   JButton jButton = new JButton("Add Customer"); 
@@ -57,7 +57,7 @@ public class DevicePriorityScheduler extends JFrame {
       super("Device Repair Queue"); //Label program window
       super.setResizable(true); //allows for resizing
       textArea = new JTextArea(50, 10);
-      textArea.setEditable(false);
+      textArea.setEditable(false); //prevents user tampering with output
       PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
     
       // keeps reference of standard output stream
@@ -160,7 +160,7 @@ public class DevicePriorityScheduler extends JFrame {
        });
       
       
-      jButtonClear.addActionListener(new ActionListener() {
+      jButtonClear.addActionListener(new ActionListener() { //Implements Clear button logic - clears text area and any queue
           public void actionPerformed(ActionEvent e) {
         	 	textArea.setText("");
         	 	 int index= customerOrders.size();
@@ -225,8 +225,6 @@ public class DevicePriorityScheduler extends JFrame {
            }	
           	
           }
-          
-          
           
       });
       
