@@ -21,12 +21,13 @@ public class CustomerOrder  {
     //variables
     private int priority;
     private String customerName;
-
+  private int insertion;
     //parameterized constructor
-    public CustomerOrder( int priority, String customerName) {
+    public CustomerOrder( int priority, String customerName, int insertion) {
         
         this.priority = priority;
         this.customerName = customerName;
+        this.insertion = insertion;
     }
 
    
@@ -63,8 +64,15 @@ public class CustomerOrder  {
         return "";
     }
 
-    public double getPriority() { //gets priority value
+    public int getPriority() { //gets priority value
         return priority;
     }
+    
+    public int getInsertion() { //gets insertion value for tie breaking
+        return insertion;
+    }
+    
+ 
+    
    
 }

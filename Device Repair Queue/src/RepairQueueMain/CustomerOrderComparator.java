@@ -19,15 +19,20 @@ import java.util.Comparator;
 
 public class CustomerOrderComparator implements Comparator<CustomerOrder> {
 
-      @Override
-      public int compare(CustomerOrder o1, CustomerOrder o2)
-      {
-    	//comparing priority value to determine order
-    	  if(o1.getPriority() == o2.getPriority()) {
-    		  return 1; 
-    	  } 
-    	  
-          return o1.getPriority() < o2.getPriority() ? 1 : -1; 
-          
+      public int compare(CustomerOrder o1, CustomerOrder o2) {
+    
+          if (o1.getPriority() != o2.getPriority()) {  //If priority values are NOT equal
+        	  //Check priority
+        	  if(o1.getPriority() < o2.getPriority()){
+        	        return 1;
+        	    }
+        	  if(o1.getPriority() > o2.getPriority()){
+        	        return -1;
+        	    }
+          }  
+          else {  //if priorities are equal then it checks insertion point
+              return o1.getInsertion() - o2.getInsertion();  
+          }
+		return 0;  
       }
   }

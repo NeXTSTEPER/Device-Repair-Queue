@@ -46,7 +46,7 @@ public class DevicePriorityScheduler extends JFrame {
   private JTextField textField; //creating textfield for customer name entry
   @SuppressWarnings("unused")
 private PrintStream standardOut;
-  
+ int insertion = 0; //Track insertion point in queue for tie breaking
   //Declaring Jbuttons for GUI
   JButton jButton = new JButton("Add Customer"); 
   JButton jButtonResults = new JButton("Sort by job priority");
@@ -170,13 +170,13 @@ private PrintStream standardOut;
                   }
           }
        });
-      
+
       //Action listener for add button which adds new customer
       jButton.addActionListener(new ActionListener() {
           @Override
      
           public void actionPerformed(ActionEvent e) {
-        	
+        
           	String nameEntered = textField.getText();//variable stores whatever is typed in customer name textfield
             String damagedSelected = jComboBox.getItemAt(jComboBox.getSelectedIndex()); //stores whatever in dropdown list is selected
              
@@ -186,41 +186,46 @@ private PrintStream standardOut;
             	
             //If structure for determining what user selected in dropdown menu
               if(damagedSelected == "Shattered iPhone screen " ) {
-            	  customerOrders.add(new CustomerOrder(2,nameEntered));
+            	 insertion = insertion + 1;
+            	  customerOrders.add(new CustomerOrder(2,nameEntered, insertion));
                 	System.out.println("Customer: " + nameEntered + " added");
                 	textField.setText("");
               } 
               
               if(damagedSelected == "iPhone Logic Board Failure") {
-            	  customerOrders.add(new CustomerOrder(3,nameEntered));
+             	 insertion = insertion + 1;
+            	  customerOrders.add(new CustomerOrder(3,nameEntered, insertion));
                 	System.out.println("Customer: " + nameEntered + " added");
                 	textField.setText("");
               }
               if(damagedSelected == "iPhone Shattered Rear Camera") {
-            	  customerOrders.add(new CustomerOrder(1,nameEntered));
+             	 insertion = insertion + 1;
+            	  customerOrders.add(new CustomerOrder(1,nameEntered, insertion ));
                 	System.out.println("Customer: " + nameEntered + " added");
                 	textField.setText("");
                 
               }
               
               if(damagedSelected == "MacBook Pro Logic Board Replacement"  ) {
-            	  customerOrders.add(new CustomerOrder(5,nameEntered));              	
+             	 insertion = insertion + 1;
+            	  customerOrders.add(new CustomerOrder(5,nameEntered, insertion));              	
               	System.out.println("Customer: " + nameEntered + " added");
               	textField.setText("");
               }
               
            
               if(damagedSelected == "MacBook Pro Top Case Replacement") {
-               	 customerOrders.add(new CustomerOrder(4,nameEntered));              	
+             	 insertion = insertion + 1;
+               	 customerOrders.add(new CustomerOrder(4,nameEntered, insertion));              	
                 	System.out.println("Customer: " + nameEntered + " added");
                 	textField.setText("");
                }
               
               if(damagedSelected == "MacBook Pro Screen Replacement") {
-              
-                	 customerOrders.add(new CustomerOrder(6, nameEntered));              	
-                 	System.out.println("Customer: " + nameEntered + " added");
-                 	textField.setText("");
+             	 insertion = insertion + 1;
+                 customerOrders.add(new CustomerOrder(6, nameEntered, insertion));              	
+                 System.out.println("Customer: " + nameEntered + " added");
+                 textField.setText("");
                 }
            }	
           	
