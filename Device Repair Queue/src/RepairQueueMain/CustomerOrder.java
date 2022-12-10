@@ -19,7 +19,7 @@ package RepairQueueMain;
 
 public class CustomerOrder  {
     //variables
-    private double priority;
+    private int priority;
     private String customerName;
 
     //parameterized constructor
@@ -66,4 +66,5 @@ public class CustomerOrder  {
     public double getPriority() { //gets priority value
         return priority;
     }
+   
 }

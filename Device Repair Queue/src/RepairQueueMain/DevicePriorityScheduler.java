@@ -176,7 +176,7 @@ private PrintStream standardOut;
           @Override
      
           public void actionPerformed(ActionEvent e) {
-        	  
+        	
           	String nameEntered = textField.getText();//variable stores whatever is typed in customer name textfield
             String damagedSelected = jComboBox.getItemAt(jComboBox.getSelectedIndex()); //stores whatever in dropdown list is selected
              

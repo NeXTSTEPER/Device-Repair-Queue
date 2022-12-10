@@ -22,11 +22,12 @@ public class CustomerOrderComparator implements Comparator<CustomerOrder> {
       @Override
       public int compare(CustomerOrder o1, CustomerOrder o2)
       {
+    	//comparing priority value to determine order
     	  if(o1.getPriority() == o2.getPriority()) {
     		  return 1; 
     	  } 
     	  
-          return o1.getPriority() < o2.getPriority() ? 1 : -1; //comparing priority value to determine order
+          return o1.getPriority() < o2.getPriority() ? 1 : -1; 
           
       }
   }
